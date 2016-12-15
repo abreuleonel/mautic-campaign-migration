@@ -17,5 +17,10 @@ class Emails1Table extends Table
 		
 		$this->table($prefix .'emails');
 		$this->entityClass('App\Model\Entity\Emails');
+		
+		$this->belongsTo('Categories', [
+				'className' => 'Categories1',
+				'foreignKey' => 'category_id'
+		]);
 	}
 }

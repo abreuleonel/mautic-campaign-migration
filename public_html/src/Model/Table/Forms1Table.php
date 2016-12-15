@@ -17,5 +17,10 @@ class Forms1Table extends Table
 		
 		$this->table($prefix .'forms');
 		$this->entityClass('App\Model\Entity\Forms');
+		
+		$this->belongsTo('Categories', [
+				'className' => 'Categories1',
+				'foreignKey' => 'category_id'
+		]);
 	}
 }

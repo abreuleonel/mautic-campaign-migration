@@ -4,7 +4,7 @@ namespace App\Model\Table;
 use Cake\ORM\Table;
 use Cake\Datasource\ConnectionManager;
 
-class SMS1Table extends Table
+class Stages1Table extends Table
 {
 	public static function defaultConnectionName() {
 		return 'mautic1';
@@ -15,8 +15,8 @@ class SMS1Table extends Table
 		$dbObject = ConnectionManager::get('mautic1');
 		$prefix = $dbObject->config()['prefix'];
 		
-		$this->table($prefix .'sms_messages');
-		$this->entityClass('App\Model\Entity\SMS');
+		$this->table($prefix .'stages');
+		$this->entityClass('App\Model\Entity\Stages');
 		
 		$this->belongsTo('Categories', [
 				'className' => 'Categories1',

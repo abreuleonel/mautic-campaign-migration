@@ -9,9 +9,18 @@ class CampaignsController extends AppController
 	public function index() 
 	{
 		$campaign1Table = TableRegistry::get('Campaign1');
-		$campaign = $campaign1Table->getFullCampaign(4);
+		$campaigns = $campaign1Table->find('all')->toArray();
 		
-		$campaign1Table->migrateData($campaign);
-		exit('OK');
+
+		$this->set('campaigns', $campaigns);
+		
+		if($this->request->is('post')) {
+			$campaign_id = $this->request->data['campaign_id'];
+			$campaign = $campaign1Table->getFullCampaign($campaign_id);
+			
+			$campaign1Table->migrateData($campaign);
+			echo 'OK';
+			exit;
+		}
 	}
 }
