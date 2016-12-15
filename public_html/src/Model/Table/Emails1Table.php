@@ -2,8 +2,7 @@
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
-use App\Model\Entity\Campaign;
-use App\Model\Entity\CampaignEvents;
+use Cake\Datasource\ConnectionManager;
 
 class Emails1Table extends Table
 {
@@ -13,7 +12,10 @@ class Emails1Table extends Table
 	
 	public function initialize(array $config)
 	{
-		$this->table('emails');
+		$dbObject = ConnectionManager::get('mautic1');
+		$prefix = $dbObject->config()['prefix'];
+		
+		$this->table($prefix .'emails');
 		$this->entityClass('App\Model\Entity\Emails');
 	}
 }
